@@ -18,7 +18,7 @@ LayUI下载及使用
 
 ![image](/media/posts/LayUI-download-and-use/2.png)
 
-前端的小哥哥说html、css、js三个要分开目录，虽然我js、css一窍不通，我还是乖乖去建了如下四个目录，以及网站首页index.html：
+前端的大佬说html、css、js三个要分开目录，所以我建了如下四个目录，以及网站首页index.html：
 
 ![image](/media/posts/LayUI-download-and-use/3.png)
 
