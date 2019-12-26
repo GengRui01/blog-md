@@ -69,14 +69,19 @@ intArrays[0][1] = 1;
 - for:loop 不可以新增或删除集合中的元素
 - foreach 不可以新增或删除集合中的元素 & 不可以修改循环外的变量值
 
-## == 和 equals 的区别
+## == equals
 
-- “==”比较的是两个引用在内存中的地址是否相同，也就是说在内存中的地址是否一样。
-- equals方法是由Object类提供的，可以由子类来进行重写。默认的实现只有当对象和自身进行比较时才会返回true， 这个时候和 “==”是等价的。
-
-Java中很多类（String类 Date类 File类）等都对equals方法进行了重写，多数重写后只要内部所存值一样就会返回true，与地址无关。
+- “==”是运算符，在两个变量都为基本数据类型，且为数值类型时，只要两个变量值相等就返回true；当为引用类型变量时比较的是两个引用在内存中的地址是否相同。
+- equals方法是由Object类提供的方法，可以由子类来进行重写。默认的实现只有当两者内存中的地址时才会返回true， 这个时候和 “==”是等价的。
+- 但是Java中很多类（String类 Date类 File类）等都对equals方法进行了重写，多数重写后只要内部所存值一样就会返回true，与地址无关。
 
 ```java
+int it = 65;
+float fl = 65.0f;
+System.out.println(it == fl);//true
+char ch = 'A';
+System.out.println(it == ch);//true
+
 String str1 = "hello";
 String str2 = "hello";
 System.out.println(str1 == str2);//true
@@ -87,11 +92,23 @@ System.out.println(str3 == str4);//false
 System.out.println(str3.equals(str4));//true
 ```
 对于上面这段代码，运行结果及理由如下：
-1. 第一行代码会在常量池中找“hello”常量，没有找到就创建“hello”常量并将其放到常量池中，然后创建一个String对象str1指向该常量；
-2. 第二行仍然会去常量池中找“hello”常量，因为刚才已经创建过了，所以可以找到“hello”常量，然后创建一个String对象str2指向该常量；
-3. “==”比较的是两个引用在内存中的地址是否相同，由于str1和str2指向的是同一个常量，所以第三行打印true；
-4. 第五行第六行分别创建了两个新的String对象，故两者物理地址不同，所以第七行打印false；
-5. String类中重写了equals方法，只要内部所存值一样就会返回true，与地址无关，str3和str4内部存值都是“world”，所以第八行打印true。
+1. 第一行第二行都为数值类型，所以第三行打印true
+2. 第四行字母'A'的ASC码为65，故第五行打印true
+3. 第七行代码会在常量池中找“hello”常量，没有找到就创建"hello"常量并将其放到常量池中，然后创建一个String对象str1指向该常量；
+4. 第八行仍然会去常量池中找“hello”常量，因为刚才已经创建过了，所以可以找到"hello"常量，然后创建一个String对象str2指向该常量；
+5. “==”比较的是两个引用在内存中的地址是否相同，由于str1和str2指向的是同一个常量，所以第九行打印true；
+6. 第十一行第十二行分别创建了两个新的String对象，故两者物理地址不同，所以第十三行打印false；
+7. String类中重写了equals方法，只要内部所存值一样就会返回true，与地址无关，str3和str4内部存值都是“world”，所以第十四行打印true。
+
+## equals hashcode
+
+hashCode()是Object类的一个方法，返回一个哈希值，它与equals()方法关系特别紧密，常用于基于hash的集合类。
+
+将对象放入到集合中的步骤如下：
+
+![image](/media/posts/java-basis/4.png)
+
+所以equals()相等hashCode()一定相等，hashCode()相等equals()不一定相等
 
 ## string stringBuilder stringBuffer
 
