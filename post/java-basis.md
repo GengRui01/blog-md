@@ -120,3 +120,16 @@ hashCode()是Object类的一个方法，返回一个哈希值，它与equals()�
 - StringBuilder
     - 不保证线程安全
     - 调用StringBuilder对象的append、replace、delete等方法修改字符串不会生成新的对象
+
+## final finally finalize
+
+- final
+    - final 修饰的类叫做最终类 该类不可被继承
+    - final 修饰的方法不能被重写
+    - final 修饰的变量叫常量 常量必须初始化 初始化之后的值不可被修改
+- finally
+    finally是对 Java 异常处理模型的最佳补充。它只能用在try/catch语句中并且附带着一个语句块，表示不管有无异常发生，finally 代码块总会被执行。
+    使用 finally 可以维护对象的内部状态，并可以清理非内存资源。特别是在关闭流这方面，如果程序员把io流的close()方法放到finally中，就会大大降低程序出错的几率。
+- finalize
+    finalize()是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法，供垃圾收集时的其他资源回收，例如关闭文件等。
+    finalize()方法是在GC清理它所从属的对象时被调用的，如果执行它的过程中抛出了无法捕获的异常（uncaught exception），GC将终止对改对象的清理，并且该异常会被忽略；直到下一次GC开始清理这个对象时，它的finalize()会被再次调用。
