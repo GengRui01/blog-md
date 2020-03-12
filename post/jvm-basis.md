@@ -1,7 +1,7 @@
 ---
 title: "JVM知识点整理"
-tags: ["JVM", "Interview"]
-date: 2019-9-11
+tags: ["Java", "Interview"]
+date: 2019-10-01
 ---
 
 JVM相关知识点整理

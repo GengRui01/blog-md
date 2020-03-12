@@ -1,7 +1,7 @@
 ---
 title: "集合相关知识点整理"
 tags: ["Java", "Interview", "Collection"]
-date: 2019-11-01
+date: 2019-11-10
 ---
 
 Java的集合主要由Collection和Map两个接口派生，这篇文章就来整理一下集合相关的知识点。
